@@ -15,7 +15,7 @@ class Thinreports::Core::Shape::Manager::TestInternal < Minitest::Test
   end
 
   def create_internal(&block)
-    report = Thinreports::Report.new layout: layout_file.path
+    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
     format = report.layout.format
 
     block.call(format) if block_given?

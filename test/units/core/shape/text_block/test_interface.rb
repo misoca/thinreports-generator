@@ -9,7 +9,7 @@ class Thinreports::Core::Shape::TextBlock::TestInterface < Minitest::Test
   TextBlock = Thinreports::Core::Shape::TextBlock
 
   def create_interface(format_config = {})
-    report = Thinreports::Report.new layout: layout_file.path
+    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
     parent = report.start_new_page
 
     TextBlock::Interface.new parent, TextBlock::Format.new(format_config)
@@ -47,7 +47,7 @@ class Thinreports::Core::Shape::TextBlock::TestInterface < Minitest::Test
   end
 
   def test_value=
-    report = Thinreports::Report.new layout: layout_file.path
+    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
     page = report.start_new_page
 
     page.item(:text_block).value = 'foo'

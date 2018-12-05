@@ -2,11 +2,11 @@
 
 require 'test_helper'
 
-class Thinreports::Layout::TestVersion < Minitest::Test
+class Thinreports::SimpleReport::Layout::TestVersion < Minitest::Test
   include Thinreports::TestHelper
 
   # Alias
-  Version = Thinreports::Layout::Version
+  Version = Thinreports::SimpleReport::Layout::Version
 
   def test_compatible?
     Version.stubs(:compatible_rules).returns(['>= 0.8.0', '< 1.0.0'])

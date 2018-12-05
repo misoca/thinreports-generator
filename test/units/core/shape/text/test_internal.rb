@@ -8,7 +8,7 @@ class Thinreports::Core::Shape::Text::TestInternal < Minitest::Test
   Text = Thinreports::Core::Shape::Text
 
   def create_internal(format_config = {})
-    report = Thinreports::Report.new layout: layout_file.path
+    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
     Text::Internal.new(report.start_new_page, Text::Format.new(format_config))
   end
 

@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class Thinreports::Layout::TestFormat < Minitest::Test
+class Thinreports::SimpleReport::Layout::TestFormat < Minitest::Test
   include Thinreports::TestHelper
 
   LAYOUT_SCHEMA = {
@@ -28,7 +28,7 @@ class Thinreports::Layout::TestFormat < Minitest::Test
   }
 
   Shape = Thinreports::Core::Shape
-  Layout = Thinreports::Layout
+  Layout = Thinreports::SimpleReport::Layout
 
   def test_attribute_readers
     format = Layout::Format.new(layout_schema)

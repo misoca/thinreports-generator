@@ -9,7 +9,7 @@ module Thinreports
 
           attr_reader :manager
 
-          # @param [Thinreports::Report::Page] parent
+          # @param [Thinreports::SimpleReport::Report::Page] parent
           # @param [Thinreports::Core::Shape::Basic::Format] format
           # @param [Thinreports::Core::Shape::List::PageState] internal (nil)
           # @param [Thinreports::Core::Shape::List::Manager] manager (nil)
@@ -72,7 +72,7 @@ module Thinreports
             manager.overflow_with?(:detail)
           end
 
-          # @param [Thinreports::Report::Page] new_parent
+          # @param [Thinreports::SimpleReport::Report::Page] new_parent
           # @return [Thinreports::Core::Shape::List::Page]
           def copy(new_parent)
             if manager.auto_page_break?

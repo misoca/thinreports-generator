@@ -23,7 +23,7 @@ class Thinreports::Core::Shape::ImageBlock::TestInternal < Minitest::Test
   end
 
   def create_internal
-    report = Thinreports::Report.new layout: layout_file.path
+    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
     parent = report.start_new_page
 
     ImageBlock::Internal.new parent, ImageBlock::Format.new({})

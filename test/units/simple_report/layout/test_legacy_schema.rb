@@ -2,10 +2,10 @@
 
 require 'test_helper'
 
-class Thinreports::Layout::TestLegacySchema < Minitest::Test
+class Thinreports::SimpleReport::Layout::TestLegacySchema < Minitest::Test
   include Thinreports::TestHelper
 
-  Layout = Thinreports::Layout
+  Layout = Thinreports::SimpleReport::Layout
 
   def test_upgrade
     legacy_schema = {

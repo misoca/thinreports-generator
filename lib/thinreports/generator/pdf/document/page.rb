@@ -9,7 +9,7 @@ module Thinreports
           'B5' => [515.9, 728.5]
         }.freeze
 
-        # @param [Thinreports::Layout::Format] format
+        # @param [Thinreports::SimpleReport::Layout::Format] format
         def start_new_page(format)
           format_id =
             if change_page_format?(format)
@@ -32,17 +32,17 @@ module Thinreports
 
         private
 
-        # @return [Thinreports::Layout::Format]
+        # @return [Thinreports::SimpleReport::Layout::Format]
         attr_reader :current_page_format
 
-        # @param [Thinreports::Layout::Format] new_format
+        # @param [Thinreports::SimpleReport::Layout::Format] new_format
         # @return [Boolean]
         def change_page_format?(new_format)
           !current_page_format ||
             current_page_format.identifier != new_format.identifier
         end
 
-        # @param [Thinreports::Layout::Format] format
+        # @param [Thinreports::SimpleReport::Layout::Format] format
         def create_format_stamp(format)
           create_stamp(format.identifier.to_s) do
             draw_template_items(format.attributes['items'])
@@ -55,7 +55,7 @@ module Thinreports
           @format_stamp_registry ||= []
         end
 
-        # @param [Thinreports::Layout::Format] format
+        # @param [Thinreports::SimpleReport::Layout::Format] format
         # @return [Hash]
         def new_basic_page_options(format)
           options = { layout: format.page_orientation.to_sym }

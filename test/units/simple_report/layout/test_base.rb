@@ -2,10 +2,10 @@
 
 require 'test_helper'
 
-class Thinreports::Layout::TestBase < Minitest::Test
+class Thinreports::SimpleReport::Layout::TestBase < Minitest::Test
   include Thinreports::TestHelper
 
-  Layout = Thinreports::Layout
+  Layout = Thinreports::SimpleReport::Layout
 
   def test_load_format
     assert_instance_of Layout::Format, Layout::Base.load_format(layout_file.path)

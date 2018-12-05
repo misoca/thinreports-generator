@@ -208,12 +208,12 @@ module Thinreports
             @finalized
           end
 
-          # @return [Thinreports::Report::Base]
+          # @return [Thinreports::SimpleReport::Report::Base]
           def report
             current_page_state.parent.report
           end
 
-          # @return [Thinreports::Layout::Base]
+          # @return [Thinreports::SimpleReport::Layout::Base]
           def layout
             current_page_state.parent.layout
           end

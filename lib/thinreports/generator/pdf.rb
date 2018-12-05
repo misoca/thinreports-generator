@@ -5,10 +5,10 @@ require 'prawn'
 module Thinreports
   module Generator
     class PDF
-      # @return [Thinreports::Report::Base]
+      # @return [Thinreports::SimpleReport::Report::Base]
       attr_reader :report
 
-      # @param [Thinreports::Report::Base] report
+      # @param [Thinreports::SimpleReport::Report::Base] report
       # @param [Hash] security (nil)
       def initialize(report, security: nil)
         report.finalize

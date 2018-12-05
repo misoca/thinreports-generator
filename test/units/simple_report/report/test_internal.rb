@@ -2,10 +2,10 @@
 
 require 'test_helper'
 
-class Thinreports::Report::TestInternal < Minitest::Test
+class Thinreports::SimpleReport::Report::TestInternal < Minitest::Test
   include Thinreports::TestHelper
 
-  Report = Thinreports::Report
+  Report = Thinreports::SimpleReport::Report
 
   def setup
     @layout_file = layout_file
@@ -58,18 +58,18 @@ class Thinreports::Report::TestInternal < Minitest::Test
   end
 
   def test_add_page_should_finalize_the_current_page
-    layout = Thinreports::Layout.new(@layout_file.path)
+    layout = Thinreports::SimpleReport::Layout.new(@layout_file.path)
 
     internal = Report::Internal.new(report, layout: @layout_file.path)
-    page = internal.add_page(Thinreports::Report::Page.new(report, layout))
-    internal.add_page(Thinreports::Report::Page.new(report, layout))
+    page = internal.add_page(Thinreports::SimpleReport::Report::Page.new(report, layout))
+    internal.add_page(Thinreports::SimpleReport::Report::Page.new(report, layout))
 
     assert_equal page.finalized?, true
   end
 
   def test_add_page_should_return_the_current_page
-    layout = Thinreports::Layout.new(@layout_file.path)
-    new_page = Thinreports::Report::Page.new(report, layout)
+    layout = Thinreports::SimpleReport::Layout.new(@layout_file.path)
+    new_page = Thinreports::SimpleReport::Report::Page.new(report, layout)
 
     internal = Report::Internal.new(report, layout: @layout_file.path)
 
@@ -77,8 +77,8 @@ class Thinreports::Report::TestInternal < Minitest::Test
   end
 
   def test_add_page_should_add_the_initialized_page
-    layout = Thinreports::Layout.new(@layout_file.path)
-    new_page = Thinreports::Report::Page.new(report, layout)
+    layout = Thinreports::SimpleReport::Layout.new(@layout_file.path)
+    new_page = Thinreports::SimpleReport::Report::Page.new(report, layout)
 
     internal = Report::Internal.new(report, layout: @layout_file.path)
     internal.add_page(new_page)
@@ -87,18 +87,18 @@ class Thinreports::Report::TestInternal < Minitest::Test
   end
 
   def test_add_page_should_count_up_the_total_page_count
-    layout = Thinreports::Layout.new(@layout_file.path)
+    layout = Thinreports::SimpleReport::Layout.new(@layout_file.path)
 
     internal = Report::Internal.new(report, layout: @layout_file.path)
-    internal.add_page(Thinreports::Report::Page.new(report, layout))
+    internal.add_page(Thinreports::SimpleReport::Report::Page.new(report, layout))
 
     assert_equal internal.page_count, 1
   end
 
   def test_add_page_should_switch_to_a_reference_to_the_current_page
-    layout = Thinreports::Layout.new(@layout_file.path)
+    layout = Thinreports::SimpleReport::Layout.new(@layout_file.path)
     new_pages = (1..2).inject([]) do |pages|
-      pages << Thinreports::Report::Page.new(report, layout)
+      pages << Thinreports::SimpleReport::Report::Page.new(report, layout)
     end
 
     internal = Report::Internal.new(report, layout: @layout_file.path)
@@ -113,14 +113,14 @@ class Thinreports::Report::TestInternal < Minitest::Test
 
   def test_add_blank_page_should_not_count_up_the_total_page_count_when_count_is_disabled
     internal = Report::Internal.new(report, layout: @layout_file.path)
-    internal.add_page(Thinreports::Report::BlankPage.new(false))
+    internal.add_page(Thinreports::SimpleReport::Report::BlankPage.new(false))
 
     assert_equal internal.page_count, 0
   end
 
   def test_add_blank_page_should_count_up_the_total_page_count_when_count_is_enabled
     internal = Report::Internal.new(report, layout: @layout_file.path)
-    internal.add_page(Thinreports::Report::BlankPage.new)
+    internal.add_page(Thinreports::SimpleReport::Report::BlankPage.new)
 
     assert_equal internal.page_count, 1
   end
@@ -185,20 +185,20 @@ class Thinreports::Report::TestInternal < Minitest::Test
   end
 
   def test_copy_page_should_finalize_current_page
-    layout = Thinreports::Layout.new(@layout_file.path)
+    layout = Thinreports::SimpleReport::Layout.new(@layout_file.path)
 
     internal = Report::Internal.new(report, layout: @layout_file.path)
-    internal.add_page(page = Thinreports::Report::Page.new(report, layout))
+    internal.add_page(page = Thinreports::SimpleReport::Report::Page.new(report, layout))
     internal.copy_page
 
     assert page.finalized?
   end
 
   def test_copy_page_should_add_the_copied_page
-    layout = Thinreports::Layout.new(@layout_file.path)
+    layout = Thinreports::SimpleReport::Layout.new(@layout_file.path)
 
     internal = Report::Internal.new(report, layout: @layout_file.path)
-    internal.add_page(Thinreports::Report::Page.new(report, layout))
+    internal.add_page(Thinreports::SimpleReport::Report::Page.new(report, layout))
     internal.copy_page
 
     assert_equal internal.page_count, 2

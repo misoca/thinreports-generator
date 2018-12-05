@@ -5,8 +5,7 @@ require 'test_helper'
 class Thinreports::TestLayout < Minitest::Test
   include Thinreports::TestHelper
 
-  def test_new
-    assert_instance_of Thinreports::Layout::Base,
-                       Thinreports::Layout.new(layout_file.path)
+  def test_class_alias
+    assert_equal Thinreports::SimpleReport::Layout, Thinreports::Layout
   end
 end

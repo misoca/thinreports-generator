@@ -15,7 +15,7 @@ class Thinreports::Core::Shape::List::TestSectionInterface < Minitest::Test
   List = Thinreports::Core::Shape::List
 
   def setup
-    @report = Thinreports::Report.new layout: layout_file.path
+    @report = Thinreports::SimpleReport::Report.new layout: layout_file.path
   end
 
   def create_interface(extra_section_schema = {})

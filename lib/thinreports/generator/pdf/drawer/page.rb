@@ -11,7 +11,7 @@ module Thinreports
             @lists = {}
           end
 
-          # @param [Thinreports::Report::Page] page
+          # @param [Thinreports::SimpleReport::Report::Page] page
           def draw(page)
             manager = page.manager
 

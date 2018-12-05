@@ -2,10 +2,10 @@
 
 require 'test_helper'
 
-class Thinreports::Report::TestBase < Minitest::Test
+class Thinreports::SimpleReport::Report::TestBase < Minitest::Test
   include Thinreports::TestHelper
 
-  Report = Thinreports::Report
+  Report = Thinreports::SimpleReport::Report
 
   def setup
     @report = Report::Base.new
@@ -51,7 +51,7 @@ class Thinreports::Report::TestBase < Minitest::Test
   def test_start_new_page_should_properly_create_a_new_Page_and_return
     @report.use_layout(@layout_file.path)
 
-    assert_instance_of Thinreports::Report::Page, @report.start_new_page
+    assert_instance_of Thinreports::SimpleReport::Report::Page, @report.start_new_page
   end
 
   def test_start_new_page_should_raise_when_the_layout_has_not_been_registered_yet
@@ -97,7 +97,7 @@ class Thinreports::Report::TestBase < Minitest::Test
   def test_add_blank_page_should_properly_create_a_new_blank_page
     @report.use_layout(@layout_file.path)
 
-    assert_instance_of Thinreports::Report::BlankPage, @report.add_blank_page
+    assert_instance_of Thinreports::SimpleReport::Report::BlankPage, @report.add_blank_page
   end
 
   def test_layout_should_return_the_default_layout_with_no_arguments
@@ -138,7 +138,7 @@ class Thinreports::Report::TestBase < Minitest::Test
     @report.use_layout(@layout_file.path)
     @report.start_new_page
 
-    assert_instance_of Thinreports::Report::Page, @report.page
+    assert_instance_of Thinreports::SimpleReport::Report::Page, @report.page
   end
 
   def test_page_count_should_return_total_page_count
