@@ -155,7 +155,7 @@ module Thinreports
         # @example Create a PDF file
         #   report.generate(filename: 'foo.pdf')
         def generate(filename: nil, security: nil)
-          Thinreports::Generator::PDF.new(self, security: security).generate(filename)
+          SimpleReport::Generator.new(self, security: security).generate(filename)
         end
 
         # @see Thinreports::Core::Shape::Manager::Target#list
