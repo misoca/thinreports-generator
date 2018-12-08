@@ -65,9 +65,7 @@ module Thinreports
         end
       end
 
-      # Change the default graphic states defined by Prawn.
-      # TODO: Delete mrthod
-      def setup_custom_graphic_states
+      def setup_default_graphic_state
         pdf.line_width(BASE_LINE_WIDTH)
       end
 
