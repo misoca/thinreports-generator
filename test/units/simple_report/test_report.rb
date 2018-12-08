@@ -15,4 +15,8 @@ class Thinreports::SimpleReport::TestReport < Minitest::Test
   def test_create
     assert_instance_of Report::Base, Report.create {}
   end
+
+  def test_alias
+    assert_equal Thinreports::SimpleReport::Report, Thinreports::Report
+  end
 end

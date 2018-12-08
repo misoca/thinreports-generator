@@ -19,6 +19,8 @@ module Thinreports
       end
     end
   end
+
+  Report = SimpleReport::Report
 end
 
 require_relative 'report/base'

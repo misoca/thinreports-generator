@@ -9,6 +9,8 @@ module Thinreports
       end
     end
   end
+
+  Layout = SimpleReport::Layout
 end
 
 require_relative 'layout/version'
