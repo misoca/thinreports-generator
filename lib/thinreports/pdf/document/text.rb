@@ -40,11 +40,7 @@ module Thinreports
           )
         end
       rescue Prawn::Errors::CannotFit
-        # Nothing to do.
-        #
-        # When the area is too small compared
-        # with the content and the style of the text.
-        #   (See prawn/core/text/formatted/line_wrap.rb#L185)
+        # Nothing to do
       end
 
       # @see #text_box
