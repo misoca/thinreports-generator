@@ -76,20 +76,6 @@ module Thinreports
         pdf.line_width(width * BASE_LINE_WIDTH)
       end
 
-      # Delegate to Prawn::Document#save_graphic_state
-      # @see Prawn::Document#save_graphics_state
-      # TODO: Delete mrthod and call with block
-      def save_graphics_state
-        pdf.save_graphics_state
-      end
-
-      # Delegate to Prawn::Document#restore_graphic_state
-      # @see Prawn::Document#restore_graphics_state
-      # TODO: Delete mrthod
-      def restore_graphics_state
-        pdf.restore_graphics_state
-      end
-
       # @param [Hash] attrs
       def with_graphic_styles(attrs, &block)
         stroke = build_stroke_styles(attrs)
@@ -98,38 +84,36 @@ module Thinreports
         # Do not draw if no colors given.
         return unless fill || stroke
 
-        save_graphics_state
+        pdf.save_graphics_state do
+          # Apply stroke-dashed.
+          if stroke && stroke[:dash]
+            length, space = stroke[:dash]
+            pdf.dash(length, space: space)
+          end
 
-        # Apply stroke-dashed.
-        if stroke && stroke[:dash]
-          length, space = stroke[:dash]
-          pdf.dash(length, space: space)
+          # Draw with fill and stroke.
+          if fill && stroke
+            pdf.fill_and_stroke do
+              line_width(stroke[:width])
+              pdf.fill_color(fill[:color])
+              pdf.stroke_color(stroke[:color])
+              block.call
+            end
+          # Draw only with fill.
+          elsif fill
+            pdf.fill do
+              pdf.fill_color(fill[:color])
+              block.call
+            end
+          # Draw only with stroke.
+          elsif stroke
+            pdf.stroke do
+              line_width(stroke[:width])
+              pdf.stroke_color(stroke[:color])
+              block.call
+            end
+          end
         end
-
-        # Draw with fill and stroke.
-        if fill && stroke
-          pdf.fill_and_stroke do
-            line_width(stroke[:width])
-            pdf.fill_color(fill[:color])
-            pdf.stroke_color(stroke[:color])
-            block.call
-          end
-        # Draw only with fill.
-        elsif fill
-          pdf.fill do
-            pdf.fill_color(fill[:color])
-            block.call
-          end
-        # Draw only with stroke.
-        elsif stroke
-          pdf.stroke do
-            line_width(stroke[:width])
-            pdf.stroke_color(stroke[:color])
-            block.call
-          end
-        end
-
-        restore_graphics_state
       end
 
       # @param [Hash] styles

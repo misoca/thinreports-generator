@@ -83,34 +83,32 @@ module Thinreports
         # When no color is given, do not draw.
         return unless attrs.key?(:color) && attrs[:color] != 'none'
 
-        save_graphics_state
+        pdf.save_graphics_state do
+          fontinfo = {
+            name: attrs.delete(:font).to_s,
+            color: parse_color(attrs.delete(:color)),
+            size: s2f(attrs.delete(:size))
+          }
 
-        fontinfo = {
-          name: attrs.delete(:font).to_s,
-          color: parse_color(attrs.delete(:color)),
-          size: s2f(attrs.delete(:size))
-        }
+          # Add the specified value to :leading option.
+          line_height = attrs.delete(:line_height)
+          if line_height
+            attrs[:leading] = text_line_leading(
+              s2f(line_height),
+              name: fontinfo[:name],
+              size: fontinfo[:size]
+            )
+          end
 
-        # Add the specified value to :leading option.
-        line_height = attrs.delete(:line_height)
-        if line_height
-          attrs[:leading] = text_line_leading(
-            s2f(line_height),
-            name: fontinfo[:name],
-            size: fontinfo[:size]
-          )
+          # Set the :character_spacing option.
+          spacing = attrs.delete(:letter_spacing)
+          attrs[:character_spacing] = s2f(spacing) if spacing
+
+          # Or... with_font_styles(attrs, fontinfo, &block)
+          with_font_styles(attrs, fontinfo) do |modified_attrs, styles|
+            block.call(modified_attrs, styles)
+          end
         end
-
-        # Set the :character_spacing option.
-        spacing = attrs.delete(:letter_spacing)
-        attrs[:character_spacing] = s2f(spacing) if spacing
-
-        # Or... with_font_styles(attrs, fontinfo, &block)
-        with_font_styles(attrs, fontinfo) do |modified_attrs, styles|
-          block.call(modified_attrs, styles)
-        end
-
-        restore_graphics_state
       end
 
       # @param [Numeric] line_height
