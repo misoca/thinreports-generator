@@ -1,24 +1,14 @@
 # frozen_string_literal: true
 
+require 'thinreports/renderer/text_block'
+
 module Thinreports
   module SimpleReport
     module Pdf
       module DrawShape
         # @param [Thinreports::Core::Shape::TextBlock::Internal] shape
         def draw_shape_tblock(shape)
-          x, y, w, h = shape.format.attributes.values_at('x', 'y', 'width', 'height')
-
-          content = shape.real_value.to_s
-          return if content.empty?
-
-          attrs = build_text_attributes(shape.style.finalized_styles)
-
-          unless shape.multiple?
-            content = content.tr("\n", ' ')
-            attrs[:single] = true
-          end
-
-          text_box(content, x, y, w, h, attrs)
+          Thinreports::Renderer::TextBlock.new(shape, self).render
         end
 
         def draw_shape_pageno(shape, page_no, page_count)
