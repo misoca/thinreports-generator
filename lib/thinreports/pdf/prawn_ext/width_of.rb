@@ -26,4 +26,4 @@ module Thinreports
   end
 end
 
-Prawn::Document.prepend Thinreports::Generator::PrawnExt::WidthOf
+Prawn::Document.prepend Thinreports::Pdf::PrawnExt::WidthOf

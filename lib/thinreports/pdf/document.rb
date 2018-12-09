@@ -11,7 +11,7 @@ require_relative 'document/parse_color'
 require_relative 'document/text'
 
 module Thinreports
-  class Pdf
+  module Pdf
     class Document
       include Utils
 

@@ -31,6 +31,30 @@ module Thinreports
         # @return [Thinreports::SimpleReport::Layout::Format]
         attr_reader :current_page_format
 
+        # @param [Numeric, String] x
+        # @param [Numeric, String] y
+        def translate(x, y, &block)
+          x, y = rpos(x, y)
+          pdf.translate(x, y, &block)
+        end
+
+        # @param [String] stamp_id
+        # @param [Array<Numeric>] at (nil)
+        def stamp(stamp_id, at = nil)
+          if at.nil?
+            pdf.stamp(stamp_id)
+          else
+            pdf.stamp_at(stamp_id, rpos(*at))
+          end
+        end
+
+        # Delegate to Prawn::Document#create_stamp
+        # @param [String] id
+        # @see Prawn::Document#create_stamp
+        def create_stamp(id, &block)
+          pdf.create_stamp(id, &block)
+        end
+
         # @param [Thinreports::SimpleReport::Layout::Format] new_format
         # @return [Boolean]
         def change_page_format?(new_format)

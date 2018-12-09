@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Thinreports
-  class Pdf
+  module Pdf
     module Font
       FONT_STORE = Thinreports.root.join('fonts')
 

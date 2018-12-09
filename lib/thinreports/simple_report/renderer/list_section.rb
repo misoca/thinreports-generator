@@ -2,7 +2,7 @@
 
 module Thinreports
   module SimpleReport
-    class Renderer
+    module Renderer
       class ListSection < Page
         # @param pdf (see Renderer::Page#initialize)
         # @param section [Thinreports::Core::Shape::List::SectionInternal] section

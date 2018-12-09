@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'pdf/document'
 require_relative 'renderer/base'
 require_relative 'renderer/page'
 require_relative 'renderer/list'

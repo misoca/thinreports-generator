@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Thinreports
-  class Pdf
+  module Pdf
     module Graphics
       STROKE_DASH = {
         dashed: [2, 2],

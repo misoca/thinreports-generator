@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Thinreports
-  class Pdf
+  module Pdf
     module Text
       # @param [String] content
       # @param [Numeric, String] x

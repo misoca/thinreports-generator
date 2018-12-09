@@ -5,7 +5,7 @@ require 'base64'
 require 'digest/md5'
 
 module Thinreports
-  class Pdf
+  module Pdf
     module Image
       # @param [String, IO] filename_or_io
       # @param [Numeric, Strng] x

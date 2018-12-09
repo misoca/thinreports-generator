@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Thinreports
-  class Pdf
+  module Pdf
     module Page
       JIS_SIZES = {
         'B4' => [728.5, 1031.8],

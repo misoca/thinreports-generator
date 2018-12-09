@@ -29,4 +29,4 @@ module Thinreports
   end
 end
 
-Prawn::Images::Image.prepend Thinreports::Generator::PrawnExt::CalcImageDimensions
+Prawn::Images::Image.prepend Thinreports::Pdf::PrawnExt::CalcImageDimensions

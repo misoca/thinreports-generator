@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Thinreports
-  class Pdf
+  module Pdf
     module ParseColor
       # @param [String] color
       # @return [String]
