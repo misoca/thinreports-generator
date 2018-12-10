@@ -11,9 +11,9 @@ module Thinreports
       end
 
       def render
-        return if params[:content].empty?
+        return if content.empty?
 
-        pdf.text_box(*params.values_at(:content, :x, :y, :width, :height, :attrs))
+        pdf.text_box(content, *params.values_at(:x, :y, :width, :height, :attrs))
       end
 
       private
@@ -21,7 +21,20 @@ module Thinreports
       attr_reader :pdf, :item
 
       def params
-        @params ||= Parameter::TextBox.new(pdf, item).parameters
+        Parameter::TextBox.new(pdf, item).parameters(single: single)
+      end
+
+      def single
+        !item.multiple?
+      end
+
+      def content
+        @content ||=
+          if item.multiple?
+            item.real_value.to_s
+          else
+            item.real_value.to_s.tr("\n", ' ')
+          end
       end
     end
   end

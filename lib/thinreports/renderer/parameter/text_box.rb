@@ -6,22 +6,21 @@ module Thinreports
       class TextBox
         include Thinreports::Utils
 
-        def initialize(pdf, text_block)
+        def initialize(pdf, item)
           @pdf = pdf
-          @item = text_block
-          @schema = text_block.format
-          @style = text_block.style.finalized_styles
+          @item = item
+          @schema = item.format
+          @style = item.style.finalized_styles
         end
 
-        def parameters
+        def parameters(single: false)
           {
-            content: content,
             x: schema.attributes['x'],
             y: schema.attributes['y'],
             width: schema.attributes['width'],
             height: schema.attributes['height'],
             attrs: {
-              single: !item.multiple?,
+              single: single,
               font: font_family(style['font-family']),
               size: style['font-size'],
               color: style['color'],
@@ -39,14 +38,6 @@ module Thinreports
         private
 
         attr_reader :pdf, :item, :schema, :style
-
-        def content
-          if item.multiple?
-            item.real_value.to_s
-          else
-            item.real_value.to_s.tr("\n", ' ')
-          end
-        end
 
         # @param [Array<String>] font_names
         # @return [String]
