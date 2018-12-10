@@ -2,6 +2,7 @@
 
 require 'thinreports/renderer/text_block'
 require 'thinreports/renderer/image'
+require 'thinreports/renderer/page_number'
 
 module Thinreports
   module SimpleReport
@@ -13,10 +14,7 @@ module Thinreports
         end
 
         def draw_shape_pageno(shape, page_no, page_count)
-          x, y, w, h = shape.format.attributes.values_at('x', 'y', 'width', 'height')
-
-          attrs = build_text_attributes(shape.style.finalized_styles)
-          text_box(shape.build_format(page_no, page_count), x, y, w, h, attrs)
+          Thinreports::Renderer::PageNumber.new(self, shape).render(no: page_no, count: page_count)
         end
 
         # @param [Thinreports::Core::Shape::Basic::Internal] shape
