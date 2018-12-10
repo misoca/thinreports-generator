@@ -21,7 +21,7 @@ module Thinreports
       attr_reader :pdf, :item
 
       def params
-        @params ||= Parameter::TextBox.new(pdf, item).params
+        @params ||= Parameter::TextBox.new(pdf, item).parameters
       end
     end
   end

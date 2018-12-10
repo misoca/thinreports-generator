@@ -13,7 +13,7 @@ module Thinreports
           @style = text_block.style.finalized_styles
         end
 
-        def params
+        def parameters
           {
             content: content,
             x: schema.attributes['x'],
