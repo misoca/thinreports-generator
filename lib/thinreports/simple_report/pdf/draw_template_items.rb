@@ -9,9 +9,11 @@ module Thinreports
           items.each do |item_attributes|
             next unless drawable?(item_attributes)
 
+            item = build_item_internal(item_attributes['type'], item_attributes)
+
             case item_attributes['type']
             when 'text' then draw_text(item_attributes)
-            when 'image' then draw_image(item_attributes)
+            when 'image' then draw_image(item)
             when 'rect' then draw_rect(item_attributes)
             when 'ellipse' then draw_ellipse(item_attributes)
             when 'line' then draw_line(item_attributes)
@@ -20,6 +22,11 @@ module Thinreports
         end
 
         private
+
+        def build_item_internal(type, attributes)
+          schema = Core::Shape::Format(type).new(attributes)
+          Core::Shape::Interface(nil, schema).internal
+        end
 
         # @param [Hash] item_attributes
         def draw_rect(item_attributes)
@@ -53,11 +60,9 @@ module Thinreports
         end
 
         # @see #draw_rect
-        def draw_image(item_attributes)
-          x, y, w, h = item_attributes.values_at('x', 'y', 'width', 'height')
-          image_data = item_attributes['data']
-
-          base64image(image_data['base64'], x, y, w, h)
+        # @param [Thinreports::Core::Shape::Basic::Internal] shape
+        def draw_image(item)
+          draw_shape_image(item)
         end
 
         def drawable?(item_attributes)

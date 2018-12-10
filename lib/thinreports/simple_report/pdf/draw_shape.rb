@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'thinreports/renderer/text_block'
+require 'thinreports/renderer/image'
 
 module Thinreports
   module SimpleReport
@@ -20,10 +21,7 @@ module Thinreports
 
         # @param [Thinreports::Core::Shape::Basic::Internal] shape
         def draw_shape_image(shape)
-          x, y, w, h = shape.format.attributes.values_at('x', 'y', 'width', 'height')
-
-          image_data = shape.format.attributes['data']
-          base64image(image_data['base64'], x, y, w, h)
+          Thinreports::Renderer::Image.new(self, shape).render
         end
 
         # @param [Thinreports::Core::Shape::ImageBlock::Internal] shape
