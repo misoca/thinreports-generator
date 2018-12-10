@@ -5,9 +5,9 @@ require_relative 'parameter/text_box'
 module Thinreports
   module Renderer
     class TextBlock
-      def initialize(item, pdf)
-        @item = item
+      def initialize(pdf, item)
         @pdf = pdf
+        @item = item
       end
 
       def render

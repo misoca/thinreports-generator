@@ -8,7 +8,7 @@ module Thinreports
       module DrawShape
         # @param [Thinreports::Core::Shape::TextBlock::Internal] shape
         def draw_shape_tblock(shape)
-          Thinreports::Renderer::TextBlock.new(shape, self).render
+          Thinreports::Renderer::TextBlock.new(self, shape).render
         end
 
         def draw_shape_pageno(shape, page_no, page_count)
