@@ -14,9 +14,9 @@ module Thinreports
             case item_attributes['type']
             when 'text' then draw_text(item)
             when 'image' then draw_image(item)
-            when 'rect' then draw_rect(item_attributes)
-            when 'ellipse' then draw_ellipse(item_attributes)
-            when 'line' then draw_line(item_attributes)
+            when 'rect' then draw_rect(item)
+            when 'ellipse' then draw_ellipse(item)
+            when 'line' then draw_line(item)
             end
           end
         end
@@ -28,36 +28,27 @@ module Thinreports
           Core::Shape::Interface(nil, schema).internal
         end
 
-        # @param [Hash] item_attributes
-        def draw_rect(item_attributes)
-          x, y, w, h = item_attributes.values_at('x', 'y', 'width', 'height')
-          graphic_attributes = build_graphic_attributes(item_attributes['style']) do |attrs|
-            attrs[:radius] = item_attributes['border-radius']
-          end
-
-          rect(x, y, w, h, graphic_attributes)
+        # @param [Thinreports::Core::Shape::Basic::Internal] item
+        def draw_rect(item)
+          draw_shape_rect(item)
         end
 
-        # @see #draw_rect
-        def draw_ellipse(item_attributes)
-          x, y, rx, ry = item_attributes.values_at('cx', 'cy', 'rx', 'ry')
-          ellipse(x, y, rx, ry, build_graphic_attributes(item_attributes['style']))
+        # @param [Thinreports::Core::Shape::Basic::Internal] item
+        def draw_ellipse(item)
+          draw_shape_ellipse(item)
         end
 
-        # @see #draw_rect
-        def draw_line(item_attributes)
-          x1, y1, x2, y2 = item_attributes.values_at('x1', 'y1', 'x2', 'y2')
-          line(x1, y1, x2, y2, build_graphic_attributes(item_attributes['style']))
+        # @param [Thinreports::Core::Shape::Basic::Internal] item
+        def draw_line(item)
+          draw_shape_line(item)
         end
 
-        # @see #draw_rect
-        # @param [Thinreports::Core::Shape::Basic::Internal] shape
+        # @param [Thinreports::Core::Shape::Basic::Internal] item
         def draw_text(item)
           draw_shape_text(item)
         end
 
-        # @see #draw_rect
-        # @param [Thinreports::Core::Shape::Basic::Internal] shape
+        # @param [Thinreports::Core::Shape::Basic::Internal] item
         def draw_image(item)
           draw_shape_image(item)
         end

@@ -5,6 +5,9 @@ require 'thinreports/renderer/image'
 require 'thinreports/renderer/page_number'
 require 'thinreports/renderer/image_block'
 require 'thinreports/renderer/text'
+require 'thinreports/renderer/ellipse'
+require 'thinreports/renderer/line'
+require 'thinreports/renderer/rect'
 
 module Thinreports
   module SimpleReport
@@ -36,23 +39,17 @@ module Thinreports
 
         # @param [Thinreports::Core::Shape::Basic::Internal] shape
         def draw_shape_ellipse(shape)
-          cx, cy, rx, ry = shape.format.attributes.values_at('cx', 'cy', 'rx', 'ry')
-          ellipse(cx, cy, rx, ry, build_graphic_attributes(shape.style.finalized_styles))
+          Thinreports::Renderer::Ellipse.new(self, shape).render
         end
 
         # @param [Thinreports::Core::Shape::Basic::Internal] shape
         def draw_shape_line(shape)
-          x1, y1, x2, y2 = shape.format.attributes.values_at('x1', 'y1', 'x2', 'y2')
-          line(x1, y1, x2, y2, build_graphic_attributes(shape.style.finalized_styles))
+          Thinreports::Renderer::Line.new(self, shape).render
         end
 
         # @param [Thinreports::Core::Shape::Basic::Internal] shape
         def draw_shape_rect(shape)
-          x, y, w, h = shape.format.attributes.values_at('x', 'y', 'width', 'height')
-          rect_attributes = build_graphic_attributes(shape.style.finalized_styles) do |attrs|
-            attrs[:radius] = shape.format.attributes['border-radius']
-          end
-          rect(x, y, w, h, rect_attributes)
+          Thinreports::Renderer::Rect.new(self, shape).render
         end
       end
     end
