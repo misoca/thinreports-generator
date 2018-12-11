@@ -4,6 +4,7 @@ require 'thinreports/renderer/text_block'
 require 'thinreports/renderer/image'
 require 'thinreports/renderer/page_number'
 require 'thinreports/renderer/image_block'
+require 'thinreports/renderer/text'
 
 module Thinreports
   module SimpleReport
@@ -30,11 +31,7 @@ module Thinreports
 
         # @param [Thinreports::Core::Shape::Text::Internal] shape
         def draw_shape_text(shape)
-          x, y, w, h = shape.format.attributes.values_at('x', 'y', 'width', 'height')
-          text(
-            shape.texts.join("\n"), x, y, w, h,
-            build_text_attributes(shape.style.finalized_styles)
-          )
+          Thinreports::Renderer::Text.new(self, shape).render
         end
 
         # @param [Thinreports::Core::Shape::Basic::Internal] shape

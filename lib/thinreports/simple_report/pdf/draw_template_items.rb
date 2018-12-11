@@ -12,7 +12,7 @@ module Thinreports
             item = build_item_internal(item_attributes['type'], item_attributes)
 
             case item_attributes['type']
-            when 'text' then draw_text(item_attributes)
+            when 'text' then draw_text(item)
             when 'image' then draw_image(item)
             when 'rect' then draw_rect(item_attributes)
             when 'ellipse' then draw_ellipse(item_attributes)
@@ -51,12 +51,9 @@ module Thinreports
         end
 
         # @see #draw_rect
-        def draw_text(item_attributes)
-          x, y, w, h = item_attributes.values_at('x', 'y', 'width', 'height')
-          text(
-            item_attributes['texts'].join("\n"), x, y, w, h,
-            build_text_attributes(item_attributes['style'])
-          )
+        # @param [Thinreports::Core::Shape::Basic::Internal] shape
+        def draw_text(item)
+          draw_shape_text(item)
         end
 
         # @see #draw_rect
