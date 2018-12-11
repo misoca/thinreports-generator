@@ -3,6 +3,7 @@
 require 'thinreports/renderer/text_block'
 require 'thinreports/renderer/image'
 require 'thinreports/renderer/page_number'
+require 'thinreports/renderer/image_block'
 
 module Thinreports
   module SimpleReport
@@ -24,16 +25,7 @@ module Thinreports
 
         # @param [Thinreports::Core::Shape::ImageBlock::Internal] shape
         def draw_shape_iblock(shape)
-          return if blank_value?(shape.src)
-
-          x, y, w, h = shape.format.attributes.values_at('x', 'y', 'width', 'height')
-          style = shape.style.finalized_styles
-
-          image_box(
-            shape.src, x, y, w, h,
-            position_x: image_position_x(style['position-x']),
-            position_y: image_position_y(style['position-y'])
-          )
+          Thinreports::Renderer::ImageBlock.new(self, shape).render
         end
 
         # @param [Thinreports::Core::Shape::Text::Internal] shape
