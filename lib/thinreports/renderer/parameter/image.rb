@@ -4,10 +4,10 @@ module Thinreports
   module Renderer
     module Parameter
       class Image
-        def initialize(pdf, image)
+        def initialize(pdf, item)
           @pdf = pdf
-          @item = image
-          @schema = image.format
+          @item = item
+          @schema = item.format
         end
 
         def parameters
