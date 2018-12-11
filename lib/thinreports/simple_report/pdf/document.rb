@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'attributes'
 require_relative 'draw_shape'
 require_relative 'draw_template_items'
 
@@ -8,7 +7,6 @@ module Thinreports
   module SimpleReport
     module Pdf
       class Document < Thinreports::Pdf::Document
-        include Attributes
         include DrawShape
         include DrawTemplateItems
 
