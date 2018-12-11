@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
-require_relative 'draw_shape'
 require_relative 'draw_template_items'
 
 module Thinreports
   module SimpleReport
     module Pdf
       class Document < Thinreports::Pdf::Document
-        include DrawShape
         include DrawTemplateItems
 
         def start_new_page(format)

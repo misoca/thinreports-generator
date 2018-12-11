@@ -12,11 +12,11 @@ module Thinreports
             item = build_item_internal(item_attributes['type'], item_attributes)
 
             case item_attributes['type']
-            when 'text' then draw_shape_text(item)
-            when 'image' then draw_shape_image(item)
-            when 'rect' then draw_shape_rect(item)
-            when 'ellipse' then draw_shape_ellipse(item)
-            when 'line' then draw_shape_line(item)
+            when 'text' then Thinreports::Renderer::Text.new(self, item).render
+            when 'image' then Thinreports::Renderer::Image.new(self, item).render
+            when 'rect' then Thinreports::Renderer::Rect.new(self, item).render
+            when 'ellipse' then Thinreports::Renderer::Ellipse.new(self, item).render
+            when 'line' then Thinreports::Renderer::Line.new(self, item).render
             end
           end
         end

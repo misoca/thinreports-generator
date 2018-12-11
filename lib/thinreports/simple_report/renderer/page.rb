@@ -48,7 +48,7 @@ module Thinreports
         end
 
         def draw_pageno_shape(shape, page)
-          @pdf.draw_shape_pageno(shape, page.no, page.report.page_count)
+          Thinreports::Renderer::PageNumber.new(@pdf, shape).render(no: page.no, count: page.report.page_count)
         end
 
         # @see #draw_shape
@@ -59,12 +59,12 @@ module Thinreports
 
         # @see #draw_shape
         def draw_tblock_shape(shape)
-          @pdf.draw_shape_tblock(shape)
+          Thinreports::Renderer::TextBlock.new(@pdf, shape).render
         end
 
         # @see #draw_shape
         def draw_iblock_shape(shape)
-          @pdf.draw_shape_iblock(shape)
+          Thinreports::Renderer::ImageBlock.new(@pdf, shape).render
         end
 
         # @param [Thinreports::Core::Shape::Base::Internal] shape
@@ -85,35 +85,35 @@ module Thinreports
         # @see #create_basic_shape_stamp
         def create_image_stamp(shape)
           create_pdf_stamp(shape) do
-            @pdf.draw_shape_image(shape)
+            Thinreports::Renderer::Image.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_rect_stamp(shape)
           create_pdf_stamp(shape) do
-            @pdf.draw_shape_rect(shape)
+            Thinreports::Renderer::Rect.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_ellipse_stamp(shape)
           create_pdf_stamp(shape) do
-            @pdf.draw_shape_ellipse(shape)
+            Thinreports::Renderer::Ellipse.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_line_stamp(shape)
           create_pdf_stamp(shape) do
-            @pdf.draw_shape_line(shape)
+            Thinreports::Renderer::Line.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_text_stamp(shape)
           create_pdf_stamp(shape) do
-            @pdf.draw_shape_text(shape)
+            Thinreports::Renderer::Text.new(@pdf, shape).render
           end
         end
       end
