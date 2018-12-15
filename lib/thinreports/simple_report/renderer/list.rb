@@ -25,10 +25,9 @@ module Thinreports
             next unless list_pageno?(list_id, shape)
 
             shape = manager.final_shape(id)
-            Thinreports::Renderer::PageNumber.new(@pdf, shape.internal).render(
-              no: list_page.no,
-              count: list_page.manager.page_count
-            )
+
+            Thinreports::Renderer::PageNumber.new(@pdf, shape.internal)
+              .render(no: list_page.no, count: list_page.manager.page_count)
           end
         end
 
