@@ -33,7 +33,7 @@ module Thinreports
         # @param [Thinreports::Core::Shape::Base::Internal] shape
         # @return [String]
         def build_item_stamp_id(shape)
-          "#{@format.identifier}#{shape.identifier}"
+          "item-#{@format.identifier}-#{shape.identifier}"
         end
 
         # @param [Thinreports::Core::Shape::Base::Internal] shape

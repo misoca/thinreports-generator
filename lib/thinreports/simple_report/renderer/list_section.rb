@@ -19,7 +19,7 @@ module Thinreports
         attr_reader :section
 
         def render_template(section_format, translate_at)
-          format_id = section_format.identifier.to_s
+          format_id = "section-#{section_format.identifier}"
 
           create_stamp(format_id) do
             Renderer::Template.new(@pdf, section_format).render

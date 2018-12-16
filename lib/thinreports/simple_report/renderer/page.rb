@@ -16,7 +16,7 @@ module Thinreports
         private
 
         def render_template(page_format)
-          format_id = page_format.identifier.to_s
+          format_id = "page-#{page_format.identifier}"
 
           create_stamp(format_id) do
             Renderer::Template.new(@pdf, page_format).render

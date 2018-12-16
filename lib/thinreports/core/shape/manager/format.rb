@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
+require 'digest/sha1'
+
 module Thinreports
   module Core
     module Shape
       module Manager
         class Format < Core::Format::Base
-          # @return [Symbol, Integer]
-          attr_reader :identifier
-
-          def initialize(config, id = nil, &block)
-            super(config, &block)
-            @identifier = id || object_id
+          # @return [String]
+          def identifier
+            @identifier ||= Digest::SHA1.hexdigest(attributes.to_s)
           end
 
           def find_shape(id)
