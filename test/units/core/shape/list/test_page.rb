@@ -44,7 +44,7 @@ class Thinreports::Core::Shape::List::TestPage < Minitest::Test
   }
 
   def create_report(&block)
-    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    report = Thinreports::BasicReport::Report.new layout: layout_file.path
     block.call(report) if block_given?
     report
   end
@@ -108,7 +108,7 @@ class Thinreports::Core::Shape::List::TestPage < Minitest::Test
   end
 
   def test_copy_should_properly_work_when_list_has_not_header
-    report = Thinreports::SimpleReport::Report.new layout: layout_file(schema: LIST_NO_HEADER_SCHEMA_JSON).path
+    report = Thinreports::BasicReport::Report.new layout: layout_file(schema: LIST_NO_HEADER_SCHEMA_JSON).path
 
     10.times { report.list.add_row }
   rescue => e

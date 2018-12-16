@@ -28,7 +28,7 @@ class Thinreports::Core::Shape::Manager::TestTarget < Minitest::Test
   end
 
   def create_manager
-    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    report = Thinreports::BasicReport::Report.new layout: layout_file.path
     layout = report.layout
 
     TestManager.new(report, layout)

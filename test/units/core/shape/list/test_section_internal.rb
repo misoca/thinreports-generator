@@ -15,7 +15,7 @@ class Thinreports::Core::Shape::List::TestSectionInternal < Minitest::Test
   List = Thinreports::Core::Shape::List
 
   def create_internal(extra_section_schema = {})
-    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    report = Thinreports::BasicReport::Report.new layout: layout_file.path
 
     List::SectionInternal.new(
       report,

@@ -6,7 +6,7 @@ class Thinreports::Core::Shape::Base::TestInternal < Minitest::Test
   include Thinreports::TestHelper
 
   def setup
-    @report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    @report = Thinreports::BasicReport::Report.new layout: layout_file.path
     @report.start_new_page
   end
 

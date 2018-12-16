@@ -9,7 +9,7 @@ class Thinreports::Core::Shape::List::TestManager < Minitest::Test
   List = Thinreports::Core::Shape::List
 
   def create_report(&block)
-    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    report = Thinreports::BasicReport::Report.new layout: layout_file.path
     block.call(report) if block_given?
     report
   end

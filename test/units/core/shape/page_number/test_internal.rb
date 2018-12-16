@@ -8,7 +8,7 @@ class Thinreports::Core::Shape::PageNumber::TestInternal < Minitest::Test
   PageNumber = Thinreports::Core::Shape::PageNumber
 
   def setup
-    @report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    @report = Thinreports::BasicReport::Report.new layout: layout_file.path
     @report.start_new_page
   end
 

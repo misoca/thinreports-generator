@@ -8,7 +8,7 @@ class Thinreports::Core::Shape::ImageBlock::TestInterface < Minitest::Test
   ImageBlock = Thinreports::Core::Shape::ImageBlock
 
   def setup
-    @report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    @report = Thinreports::BasicReport::Report.new layout: layout_file.path
     @page = @report.start_new_page
   end
 

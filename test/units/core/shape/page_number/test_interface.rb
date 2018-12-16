@@ -8,7 +8,7 @@ class Thinreports::Core::Shape::PageNumber::TestInterface < Minitest::Test
   PageNumber = Thinreports::Core::Shape::PageNumber
 
   def create_pageno(format = {})
-    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    report = Thinreports::BasicReport::Report.new layout: layout_file.path
     parent = report.start_new_page
 
     PageNumber::Interface.new parent, PageNumber::Format.new(format)

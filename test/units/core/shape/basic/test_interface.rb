@@ -9,7 +9,7 @@ class Thinreports::Core::Shape::Basic::TestInterface < Minitest::Test
   Basic = Thinreports::Core::Shape::Basic
 
   def create_interface(format_config = {})
-    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    report = Thinreports::BasicReport::Report.new layout: layout_file.path
     parent = report.start_new_page
 
     Basic::Interface.new parent, Basic::Format.new(format_config)

@@ -9,7 +9,7 @@ class Thinreports::Core::Shape::Basic::TestInternal < Minitest::Test
   Basic = Thinreports::Core::Shape::Basic
 
   def create_internal(format_config = {})
-    report = Thinreports::SimpleReport::Report.new layout: layout_file.path
+    report = Thinreports::BasicReport::Report.new layout: layout_file.path
 
     Basic::Internal.new report.page, Basic::Format.new(format_config)
   end

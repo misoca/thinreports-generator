@@ -26,7 +26,7 @@ module Thinreports
 
           private
 
-          # @param [Thinreports::SimpleReport::Report::Page, Thinreports::Core::Shape::List::SectionInterface] parent
+          # @param [Thinreports::BasicReport::Report::Page, Thinreports::Core::Shape::List::SectionInterface] parent
           # @param [Thinreports::Core::Shape::Basic::Format] format
           # @return [Thinreports::Core::Shape::Basic::Internal]
           # @abstract
