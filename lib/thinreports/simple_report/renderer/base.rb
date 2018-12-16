@@ -35,7 +35,7 @@ module Thinreports
         end
 
         # @param [Thinreports::Core::Shape::Base::Internal] shape
-        def create_pdf_stamp(shape, &block)
+        def create_item_stamp(shape, &block)
           @pdf.create_stamp(pdf_stamp_id(shape), &block)
         end
       end

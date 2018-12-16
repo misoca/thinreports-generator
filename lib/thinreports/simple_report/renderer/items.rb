@@ -106,35 +106,35 @@ module Thinreports
 
         # @see #create_basic_shape_stamp
         def create_image_stamp(shape)
-          create_pdf_stamp(shape) do
+          create_item_stamp(shape) do
             Thinreports::Renderer::Image.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_rect_stamp(shape)
-          create_pdf_stamp(shape) do
+          create_item_stamp(shape) do
             Thinreports::Renderer::Rect.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_ellipse_stamp(shape)
-          create_pdf_stamp(shape) do
+          create_item_stamp(shape) do
             Thinreports::Renderer::Ellipse.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_line_stamp(shape)
-          create_pdf_stamp(shape) do
+          create_item_stamp(shape) do
             Thinreports::Renderer::Line.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_text_stamp(shape)
-          create_pdf_stamp(shape) do
+          create_item_stamp(shape) do
             Thinreports::Renderer::Text.new(@pdf, shape).render
           end
         end
