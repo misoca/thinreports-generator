@@ -10,8 +10,6 @@ module Thinreports
         def initialize(pdf, format)
           @pdf = pdf
           @format = format
-          @stamps = []
-          @render_at = nil
         end
 
         # @abstract
@@ -31,9 +29,9 @@ module Thinreports
         #   @param [String] shape_id
         # @overload pdf_stamp(shape)
         #   @param [Thinreports::Core::Shape::Base::Internal] shape
-        def pdf_stamp(shape)
+        def pdf_stamp(shape, translate_at = nil)
           shape = pdf_stamp_id(shape) unless shape.is_a?(::String)
-          @pdf.stamp(shape, @render_at)
+          @pdf.stamp(shape, translate_at)
         end
 
         # @param [Thinreports::Core::Shape::Base::Internal] shape

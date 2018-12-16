@@ -54,7 +54,7 @@ module Thinreports
         # @param [Thinreports::Core::Shape::List::SectionInternal] section
         # @return [Thinreports::SimpleReport::Renderer::ListSection]
         def list_section_renderer(section)
-          @sections[section.section_name] ||= Renderer::ListSection.new(@pdf, section)
+          @sections[section.section_name] ||= Renderer::ListSection.new(@pdf, section.format)
         end
       end
     end

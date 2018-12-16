@@ -1,45 +1,37 @@
 # frozen_string_literal: true
 
+require_relative 'items'
+require_relative 'template'
+
 module Thinreports
   module SimpleReport
     module Renderer
-      class ListSection < Page
-        # @param pdf (see Renderer::Page#initialize)
-        # @param section [Thinreports::Core::Shape::List::SectionInternal] section
-        def initialize(pdf, section)
-          super(pdf, section.format)
-          @section = section
-          @stamp_created = false
-        end
-
-        # @param [Thinreports::Core::Shape::List::SectionInternal] section
-        # @param [Array<Numeric>] at
-        def render(section, at)
-          @render_at = at
-          draw_section
-          super(section)
+      class ListSection < Base
+        # @param [Thinreports::Core::Shape::List::SectionInterface] section
+        # @param [Array<Numeric>] position
+        def render(section, position)
+          render_template(section.internal.format, position)
+          render_items(section, position)
         end
 
         private
 
-        def draw_section
-          id = @format.identifier.to_s
+        attr_reader :section
 
-          unless @stamp_created
-            @pdf.create_stamp(id) { @pdf.draw_template_items(@format.attributes['items']) }
-            @stamp_created = true
+        def render_template(section_format, translate_at)
+          format_id = section_format.identifier.to_s
+
+          unless @pdf.stamp_exist?(format_id)
+            @pdf.create_stamp(format_id) do
+              Renderer::Template.new(@pdf, section_format).render
+            end
           end
-          pdf_stamp(id)
+
+          @pdf.stamp(format_id, translate_at)
         end
 
-        # @see Thinreports::Pdf::Renderer::Page#draw_tblock_shape
-        def draw_tblock_shape(shape)
-          @pdf.translate(*@render_at) { super }
-        end
-
-        # @see Thinreports::Pdf::Renderer::Page#draw_iblock_shape
-        def draw_iblock_shape(shape)
-          @pdf.translate(*@render_at) { super }
+        def render_items(section, translate_at)
+          Renderer::Items.new(@pdf, @format).render(section, translate_at)
         end
       end
     end

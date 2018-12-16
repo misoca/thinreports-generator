@@ -47,13 +47,27 @@ module Thinreports
         return @document.add_blank_page if page.blank?
 
         format = page.layout.format
-        @document.start_new_page(format)
+        add_page(format)
 
         page_renderer(format).render(page)
       end
 
       def page_renderer(format)
         @renderers[format.identifier] ||= Renderer::Page.new(@document, format)
+      end
+
+      def add_page(format)
+        page_size =
+          if format.user_paper_type?
+            [format.page_width.to_f, format.page_height.to_f]
+          else
+            format.page_paper_type
+          end
+
+        @document.start_new_page(
+          layout: format.page_orientation.to_sym,
+          size: page_size
+        )
       end
     end
   end
