@@ -25,15 +25,6 @@ module Thinreports
           "#{@format.identifier}#{shape.identifier}"
         end
 
-        # @overload pdf_stamp(shape_id)
-        #   @param [String] shape_id
-        # @overload pdf_stamp(shape)
-        #   @param [Thinreports::Core::Shape::Base::Internal] shape
-        def pdf_stamp(shape, translate_at = nil)
-          shape = pdf_stamp_id(shape) unless shape.is_a?(::String)
-          @pdf.stamp(shape, translate_at)
-        end
-
         # Create stamp if not exist
         #
         # @param [String] stamp_id

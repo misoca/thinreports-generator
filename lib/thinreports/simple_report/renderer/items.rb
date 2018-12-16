@@ -45,7 +45,7 @@ module Thinreports
               create_basic_shape_stamp(shape)
               @stamp_ids << stamp_id
             end
-            pdf_stamp(shape, translate_at)
+            @pdf.stamp(stamp_id, translate_at)
           end
         end
 
