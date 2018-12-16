@@ -3,8 +3,8 @@
 require_relative 'parameter/graphic_style'
 
 module Thinreports
-  module Renderer
-    class Ellipse
+  module ItemRenderer
+    class Line
       def initialize(pdf, item)
         @pdf = pdf
         @item = item
@@ -12,11 +12,11 @@ module Thinreports
       end
 
       def render
-        pdf.ellipse(
-          schema.attributes['cx'],
-          schema.attributes['cy'],
-          schema.attributes['rx'],
-          schema.attributes['ry'],
+        pdf.line(
+          schema.attributes['x1'],
+          schema.attributes['y1'],
+          schema.attributes['x2'],
+          schema.attributes['y2'],
           graphic_style_params
         )
       end

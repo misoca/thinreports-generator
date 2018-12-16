@@ -3,7 +3,7 @@
 require_relative 'parameter/text_box'
 
 module Thinreports
-  module Renderer
+  module ItemRenderer
     class TextBlock
       def initialize(pdf, item)
         @pdf = pdf

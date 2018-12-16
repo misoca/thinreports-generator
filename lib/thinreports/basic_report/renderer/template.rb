@@ -12,15 +12,15 @@ module Thinreports
 
             case item_attributes['type']
             when 'text'
-              Thinreports::Renderer::Text.new(@pdf, item).render
+              ItemRenderer::Text.new(@pdf, item).render
             when 'image'
-              Thinreports::Renderer::Image.new(@pdf, item).render
+              ItemRenderer::Image.new(@pdf, item).render
             when 'rect'
-              Thinreports::Renderer::Rect.new(@pdf, item).render
+              ItemRenderer::Rect.new(@pdf, item).render
             when 'ellipse'
-              Thinreports::Renderer::Ellipse.new(@pdf, item).render
+              ItemRenderer::Ellipse.new(@pdf, item).render
             when 'line'
-              Thinreports::Renderer::Line.new(@pdf, item).render
+              ItemRenderer::Line.new(@pdf, item).render
             end
           end
         end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Thinreports
-  module Renderer
+  module ItemRenderer
     module Parameter
       class GraphicStyle
         def initialize(pdf, item)

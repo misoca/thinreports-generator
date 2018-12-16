@@ -50,7 +50,7 @@ module Thinreports
           page = page_or_section
 
           if page.count? && shape.for_report?
-            Thinreports::Renderer::PageNumber.new(@pdf, shape)
+            ItemRenderer::PageNumber.new(@pdf, shape)
               .render(
                 no: page.no,
                 count: page.report.page_count
@@ -66,7 +66,7 @@ module Thinreports
 
         # @see #draw_shape
         def draw_tblock_shape(shape, translate_at = nil)
-          renderer = Thinreports::Renderer::TextBlock.new(@pdf, shape)
+          renderer = ItemRenderer::TextBlock.new(@pdf, shape)
           if translate_at
             @pdf.translate(*translate_at) { renderer.render }
           else
@@ -76,7 +76,7 @@ module Thinreports
 
         # @see #draw_shape
         def draw_iblock_shape(shape, translate_at = nil)
-          renderer = Thinreports::Renderer::ImageBlock.new(@pdf, shape)
+          renderer = ItemRenderer::ImageBlock.new(@pdf, shape)
           if translate_at
             @pdf.translate(*translate_at) { renderer.render }
           else
@@ -102,35 +102,35 @@ module Thinreports
         # @see #create_basic_shape_stamp
         def create_image_stamp(shape)
           create_item_stamp(shape) do
-            Thinreports::Renderer::Image.new(@pdf, shape).render
+            ItemRenderer::Image.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_rect_stamp(shape)
           create_item_stamp(shape) do
-            Thinreports::Renderer::Rect.new(@pdf, shape).render
+            ItemRenderer::Rect.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_ellipse_stamp(shape)
           create_item_stamp(shape) do
-            Thinreports::Renderer::Ellipse.new(@pdf, shape).render
+            ItemRenderer::Ellipse.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_line_stamp(shape)
           create_item_stamp(shape) do
-            Thinreports::Renderer::Line.new(@pdf, shape).render
+            ItemRenderer::Line.new(@pdf, shape).render
           end
         end
 
         # @see #create_basic_shape_stamp
         def create_text_stamp(shape)
           create_item_stamp(shape) do
-            Thinreports::Renderer::Text.new(@pdf, shape).render
+            ItemRenderer::Text.new(@pdf, shape).render
           end
         end
       end

@@ -26,7 +26,7 @@ module Thinreports
 
             shape = manager.final_shape(id)
 
-            Thinreports::Renderer::PageNumber.new(@pdf, shape.internal)
+            ItemRenderer::PageNumber.new(@pdf, shape.internal)
               .render(no: list_page.no, count: list_page.manager.page_count)
           end
         end

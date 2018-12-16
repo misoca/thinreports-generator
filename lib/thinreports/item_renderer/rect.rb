@@ -3,7 +3,7 @@
 require_relative 'parameter/graphic_style'
 
 module Thinreports
-  module Renderer
+  module ItemRenderer
     class Rect
       def initialize(pdf, item)
         @pdf = pdf

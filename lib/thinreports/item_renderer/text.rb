@@ -3,7 +3,7 @@
 require_relative 'parameter/text'
 
 module Thinreports
-  module Renderer
+  module ItemRenderer
     class Text
       def initialize(pdf, item)
         @pdf = pdf

@@ -3,7 +3,7 @@
 require_relative 'parameter/image'
 
 module Thinreports
-  module Renderer
+  module ItemRenderer
     class Image
       def initialize(pdf, item)
         @pdf = pdf

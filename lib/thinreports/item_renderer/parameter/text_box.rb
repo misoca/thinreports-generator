@@ -3,7 +3,7 @@
 require_relative 'text_style'
 
 module Thinreports
-  module Renderer
+  module ItemRenderer
     module Parameter
       class TextBox
         def initialize(pdf, item)

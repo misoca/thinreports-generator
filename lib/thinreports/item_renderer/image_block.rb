@@ -3,7 +3,7 @@
 require_relative 'parameter/image_box'
 
 module Thinreports
-  module Renderer
+  module ItemRenderer
     class ImageBlock
       include Thinreports::Utils
 
