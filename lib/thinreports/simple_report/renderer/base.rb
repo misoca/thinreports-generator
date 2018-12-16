@@ -34,9 +34,17 @@ module Thinreports
           @pdf.stamp(shape, translate_at)
         end
 
+        # Create stamp if not exist
+        #
+        # @param [String] stamp_id
+        def create_stamp(stamp_id, &block)
+          return if @pdf.stamp_exist?(stamp_id)
+          @pdf.create_stamp(stamp_id, &block)
+        end
+
         # @param [Thinreports::Core::Shape::Base::Internal] shape
         def create_item_stamp(shape, &block)
-          @pdf.create_stamp(pdf_stamp_id(shape), &block)
+          create_stamp(pdf_stamp_id(shape), &block)
         end
       end
     end

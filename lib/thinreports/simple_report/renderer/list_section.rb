@@ -21,10 +21,8 @@ module Thinreports
         def render_template(section_format, translate_at)
           format_id = section_format.identifier.to_s
 
-          unless @pdf.stamp_exist?(format_id)
-            @pdf.create_stamp(format_id) do
-              Renderer::Template.new(@pdf, section_format).render
-            end
+          create_stamp(format_id) do
+            Renderer::Template.new(@pdf, section_format).render
           end
 
           @pdf.stamp(format_id, translate_at)
