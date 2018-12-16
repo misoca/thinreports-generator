@@ -15,12 +15,12 @@ module Thinreports
     class Document
       include Utils
 
-      include Pdf::Font
-      include Pdf::Graphics
-      include Pdf::Image
-      include Pdf::Page
-      include Pdf::ParseColor
-      include Pdf::Text
+      include Font
+      include Graphics
+      include Image
+      include Page
+      include ParseColor
+      include Text
 
       # @return [Prawn::Document]
       attr_reader :pdf
