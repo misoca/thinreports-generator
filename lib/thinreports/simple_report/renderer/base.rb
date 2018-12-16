@@ -19,23 +19,26 @@ module Thinreports
 
         private
 
-        # @param [Thinreports::Core::Shape::Base::Internal] shape
-        # @return [String]
-        def pdf_stamp_id(shape)
-          "#{@format.identifier}#{shape.identifier}"
-        end
-
         # Create stamp if not exist
         #
         # @param [String] stamp_id
+        # @return [String] stamp_id
         def create_stamp(stamp_id, &block)
-          return if @pdf.stamp_exist?(stamp_id)
-          @pdf.create_stamp(stamp_id, &block)
+          unless @pdf.stamp_exist?(stamp_id)
+            @pdf.create_stamp(stamp_id, &block)
+          end
+          stamp_id
+        end
+
+        # @param [Thinreports::Core::Shape::Base::Internal] shape
+        # @return [String]
+        def build_item_stamp_id(shape)
+          "#{@format.identifier}#{shape.identifier}"
         end
 
         # @param [Thinreports::Core::Shape::Base::Internal] shape
         def create_item_stamp(shape, &block)
-          create_stamp(pdf_stamp_id(shape), &block)
+          create_stamp(build_item_stamp_id(shape), &block)
         end
       end
     end

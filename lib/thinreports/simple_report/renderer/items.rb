@@ -6,7 +6,6 @@ module Thinreports
       class Items < Base
         def initialize(pdf, format)
           super
-          @stamp_ids = []
           @list_renderers = {}
         end
 
@@ -40,12 +39,8 @@ module Thinreports
           elsif shape.type_of?(Core::Shape::ImageBlock::TYPE_NAME)
             draw_iblock_shape(shape, translate_at)
           else
-            stamp_id = pdf_stamp_id(shape)
-            unless @pdf.stamp_exist?(stamp_id)
-              create_basic_shape_stamp(shape)
-              @stamp_ids << stamp_id
-            end
-            @pdf.stamp(stamp_id, translate_at)
+            item_stamp_id = create_basic_shape_stamp(shape)
+            @pdf.stamp(item_stamp_id, translate_at)
           end
         end
 
