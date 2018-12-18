@@ -65,15 +65,13 @@ module Thinreports
         @pdf
       end
 
-      private
-
       def finalize
         clean_temp_images
       end
 
       # @param [Array<String, Numeric>] values
       # @return [Numeric, Array<Numeric>, nil]
-      def s2f(*values)
+      def normalize_number(*values)
         return nil if values.empty?
 
         if values.size == 1
@@ -84,6 +82,9 @@ module Thinreports
           values.map { |v| s2f(v) }
         end
       end
+      # This alias is for saving compatibility
+      # TODO: Remove s2f and use normalize_number instead.
+      alias s2f normalize_number
 
       # @param [Numeric, String] x
       # @param [Numeric, String] y
