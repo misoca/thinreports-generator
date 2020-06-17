@@ -4,6 +4,19 @@
 [![Test](https://github.com/thinreports/thinreports-generator/workflows/Test/badge.svg)](https://github.com/thinreports/thinreports-generator/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/054b400031608957ec4a/maintainability)](https://codeclimate.com/github/thinreports/thinreports-generator/maintainability)
 
+## About This Version
+
+This version of thinreports-generator was forked from [thinreports/thinreports-generator](https://github.com/thinreports/thinreports-generator), and has been implemented the [section-report format](https://github.com/thinreports/thinreports/issues/7) proposed by Thinreports community.
+We also added some additional features such as stack-view.
+
+See [README_FOR_SECTION_REPORT.md](README_FOR_SECTION_REPORT.md) for details and usage of the section-report format.
+
+## Our Plan
+
+We propose this section-report format to Thinreports community, and have planned to merge it into the original Thinreports repository in cooperation with the community.
+
+---
+
 [Thinreports](http://www.thinreports.org) is an open source report generating tool for Ruby.
 
   * Thinreports Editor (GUI Designer)
