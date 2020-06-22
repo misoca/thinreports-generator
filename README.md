@@ -13,7 +13,7 @@ See [README_FOR_SECTION_REPORT.md](README_FOR_SECTION_REPORT.md) for details and
 
 ## Our Plan
 
-We propose this section-report format to Thinreports community, and have planned to merge it into the original Thinreports repository in cooperation with the community.
+We are planning to send pull request of this changes to the original Thinreports repository in the near future.
 
 ---
 
