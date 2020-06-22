@@ -54,7 +54,7 @@ See [features/section_report_basic](test/features/section_report_basic/README.md
 - [Section Parameters](test/features/section_report_section_parameters/README.md)
 - [Item Follow Stretch](test/features/section_report_item_follow_stretch/README.md)
 - [Item Parameters](test/features/section_report_item_parameters/README.md)
-- [StackView](test/features/sectiono_report_stack_view/README.md)
+- [StackView](test/features/section_report_stack_view/README.md)
 - [StackViewRow Auto Stretch](test/features/section_report_stack_view_row_auto_stretch/README.md)
 - [StackViewRow Bottom Margin](test/features/section_report_stack_view_row_bottom_margin/README.md)
 - [StackViewRow Parameters](test/features/section_report_stack_view_row_parameters/README.md)
