@@ -1,9 +1,5 @@
 # Thinreports Generator
 
-[![Gem Version](https://badge.fury.io/rb/thinreports.svg)](http://badge.fury.io/rb/thinreports)
-[![Test](https://github.com/thinreports/thinreports-generator/workflows/Test/badge.svg)](https://github.com/thinreports/thinreports-generator/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/054b400031608957ec4a/maintainability)](https://codeclimate.com/github/thinreports/thinreports-generator/maintainability)
-
 ## About This Version
 
 This version of thinreports-generator was forked from [thinreports/thinreports-generator](https://github.com/thinreports/thinreports-generator), and has been implemented the [section-report format](https://github.com/thinreports/thinreports/issues/7) proposed by Thinreports community.
@@ -16,6 +12,10 @@ See [README_FOR_SECTION_REPORT.md](README_FOR_SECTION_REPORT.md) for details and
 We are planning to send pull request of this changes to the original Thinreports repository in the near future.
 
 ---
+
+[![Gem Version](https://badge.fury.io/rb/thinreports.svg)](http://badge.fury.io/rb/thinreports)
+[![Test](https://github.com/thinreports/thinreports-generator/workflows/Test/badge.svg)](https://github.com/thinreports/thinreports-generator/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/054b400031608957ec4a/maintainability)](https://codeclimate.com/github/thinreports/thinreports-generator/maintainability)
 
 [Thinreports](http://www.thinreports.org) is an open source report generating tool for Ruby.
 
