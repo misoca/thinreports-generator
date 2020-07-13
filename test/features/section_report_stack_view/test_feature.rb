@@ -30,6 +30,11 @@ class TestSectionReportStackViewFeature < FeatureTest
                       },
                       row3: {
                         display: false
+                      },
+                      nonexistent_row: {
+                        items: {
+                          any_item: 'nonexistent rows and items within them are ignored'
+                        }
                       }
                     }
                   }

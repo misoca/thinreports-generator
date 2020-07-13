@@ -14,12 +14,24 @@ class TestSectionReportBasicFeature < FeatureTest
       params: {
         groups: [
           {
+            headers: {
+              nonexistent_header: {
+                items: {
+                  any_item: 'nonexistent sections and items within them are ignored'
+                }
+              }
+            },
             details: build_details,
             footers: {
               overall: {
                 items: {
                   number_of_items: @categories.sum { |category| category.items.count },
                   number_of_categories: @categories.count
+                }
+              },
+              nonexistent_footer: {
+                items: {
+                  any_item: 'nonexistent sections and items within them are ignored'
                 }
               }
             }
@@ -39,6 +51,12 @@ class TestSectionReportBasicFeature < FeatureTest
         id: 'item_category',
         items: {
           category_name: category.name
+        }
+      }
+      details << {
+        id: 'nonexistent_detail',
+        items: {
+          any_item: 'nonexistent sections and items within them are ignored'
         }
       }
       category.items.each do |item|
