@@ -59,6 +59,7 @@ See [features/section_report_basic](test/features/section_report_basic/README.md
 - [StackViewRow Bottom Margin](test/features/section_report_stack_view_row_bottom_margin/README.md)
 - [StackViewRow Parameters](test/features/section_report_stack_view_row_parameters/README.md)
 - [StackView with Floating Item](test/features/section_report_stack_view_with_floating_item/README.md)
+- [Nonexistent Id](test/features/section_report_nonexistent_id/README.md)
 - [TextBlock Vertical Align](test/features/section_report_text_block_vertical_align/README.md)
 
 ## Implementation Status
