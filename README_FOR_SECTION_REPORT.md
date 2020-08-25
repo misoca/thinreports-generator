@@ -14,7 +14,7 @@ You have to use [this new Thinreports Editor](https://github.com/misoca/thinrepo
 Add this line to your Gemfile:
 
 ```ruby
-gem 'thinreports-generator', github: 'misoca/thinreports-generator', tag: 'v1.0.0-sectionreport.x'
+gem 'thinreports', github: 'misoca/thinreports-generator', tag: 'v1.0.0-sectionreport.x'
 ```
 
 Substitute `v1.0.0-sectionreport.x` with [the version of the latest release](https://github.com/misoca/thinreports-generator/releases). Then, execute `bundle install`.
@@ -27,18 +27,20 @@ require 'thinreports'
 params = {
   type: :section,
   layout_file: '/path/to/section-report-format-template.tlf',
-  groups: [
-    {
-      details: [
-        {
-          id: :detail,
-          items: {
-            price: 1000
+  params: {
+    groups: [
+      {
+        details: [
+          {
+            id: :detail,
+            items: {
+              price: 1000
+            }
           }
-        }
-      ]
-    }
-  ]
+        ]
+      }
+    ]
+  }
 }
 Thinreports.generate(params, filename: 'sample.pdf')
 ```
