@@ -4,7 +4,7 @@ section-report 形式では、ヘッダー・フッター・繰り返し行の3�
 
 - [Example code](test_feature.rb)
 - [Example template file](template.tlf)
-- [Example PDF](expected.pdf)
+- [Example PDF](expect.pdf)
 
 ## セクション
 
